@@ -23,7 +23,7 @@ pipeline{
           }
         }
 
-        stage('Unit Tests') {
+        stage('Deploy to Play Store') {
           steps{
             echo "------------>Unit Tests<------------"
             sh "bundle exec fastlane internal versionName:${params['versionName']}"
