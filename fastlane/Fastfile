@@ -27,16 +27,16 @@ platform :android do
          gradle_file_path: "./app/build.gradle",
     )
 
-    git_add(path: "./app/build.gradle")
-    git_commit(path: "./version.txt", message: "Up version code")
-    push_to_git_remote(
-        remote: "origin"
-    )
-
     gradle(task: "clean bundleRelease")
     upload_to_play_store(
         track:'internal',
         version_name: options[:versionName]
+    )
+
+    git_add(path: "./app/build.gradle")
+    git_commit(path: "./app/build.gradle", message: "Up version code")
+    push_to_git_remote(
+        remote: "origin"
     )
   end
 
