@@ -1,4 +1,8 @@
 pipeline{
+    agent {
+        label 'Slave_Mac'
+    }
+
     options {
       	buildDiscarder(logRotator(numToKeepStr: '3'))
      	disableConcurrentBuilds()
