@@ -12,14 +12,14 @@ pipeline{
         stage('Compile') {
           steps {
             echo "------------>Compile<------------"
-            sh "gradlew build -x test"
+            sh "./gradlew build -x test"
           }
         }
 
         stage('Unit Tests') {
           steps{
             echo "------------>Unit Tests<------------"
-            sh "gradlew test"
+            sh "./gradlew test"
           }
         }
 
