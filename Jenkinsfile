@@ -25,8 +25,8 @@ pipeline{
 
         stage('Deploy to Play Store') {
           steps{
-            echo "------------>Unit Tests<------------"
-            sh "bundle exec fastlane internal versionName:${params['versionName']}"
+            echo "------------>Deployment<------------"
+            sh "bundle exec fastlane internal versionName:${params['versionName']} releaseNotes:${params['releaseNotes']"
           }
         }
     }

@@ -18,13 +18,11 @@ default_platform(:android)
 platform :android do
   desc "Submit a new Beta Build to Crashlytics Beta"
   lane :internal do |options|
-    increment_version_code(
+    newVersionCode = increment_version_code(
          gradle_file_path: "./app/build.gradle",
     )
-    
-    make_changelog_from_jenkins(
-        fallback_changelog: "In this version, we add release notes from internal task itself"
-    )
+
+    sh("echo \"#{options[:releaseNotes]}\" >> metadata/android/en-US/changelogs/#{newVersionCode}.txt")
 
     gradle(task: "clean bundleRelease")
 
