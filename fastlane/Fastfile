@@ -37,4 +37,9 @@ platform :android do
         remote: "origin"
     )
   end
+
+  lane :git_message_tag do
+    result = sh("git tag -l --format='%(contents)' 1.0.13")
+    print("this is tag message: #{result}")
+  end
 end
