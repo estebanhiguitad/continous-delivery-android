@@ -1,1 +1,0 @@
-App for get knowledge about continuous deploy

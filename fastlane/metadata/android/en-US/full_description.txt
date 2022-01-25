@@ -1,1 +1,0 @@
-An app designed to tech hoy to make a Continuous Delivery with Fastlane

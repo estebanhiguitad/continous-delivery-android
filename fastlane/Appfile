@@ -1,2 +1,0 @@
-json_key_file("formats/play-store-5466363947467651507.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
-package_name("co.com.esteban.continuousdelivery") # e.g. com.krausefx.app

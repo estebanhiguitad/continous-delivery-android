@@ -22,13 +22,6 @@ pipeline{
             sh "./gradlew test"
           }
         }
-
-        stage('Deploy to Play Store') {
-          steps{
-            echo "------------>Deployment<------------"
-            sh "bundle exec fastlane internal versionName:${params['versionName']} releaseNotes:\"${params['releaseNotes']}\""
-          }
-        }
     }
 
 }
