@@ -1,0 +1,43 @@
+pipeline{
+    agent {
+        label 'Slave_Mac'
+    }
+
+    options {
+      	buildDiscarder(logRotator(numToKeepStr: '3'))
+     	disableConcurrentBuilds()
+    }
+
+    stages{
+        stage('Compile') {
+          steps {
+            echo "------------>Compile<------------"
+            sh "./gradlew build -x test"
+          }
+        }
+
+        stage('Unit Tests') {
+          steps{
+            echo "------------>Unit Tests<------------"
+            sh "./gradlew testDebugUnitTest"
+          }
+        }
+
+        stage('Instrumented Tests') {
+          steps{
+            echo "------------>Instrumented Tests<------------"
+            sh "./gradlew connectedAndroidTest"
+          }
+        }
+
+        stage('Static Code Analysis') {
+          steps{
+            echo '------------>Static Code Analysis<------------'
+            withSonarQubeEnv('Sonar') {
+                sh "${tool name: 'SonarScanner-Mac', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
+            }
+          }
+        }
+
+    }
+}

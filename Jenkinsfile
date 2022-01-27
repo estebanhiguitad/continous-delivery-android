@@ -9,20 +9,6 @@ pipeline{
     }
 
     stages{
-        stage('Compile') {
-          steps {
-            echo "------------>Compile<------------"
-            sh "./gradlew build -x test"
-          }
-        }
-
-        stage('Instrumented Tests') {
-          steps{
-            echo "------------>Unit Tests<------------"
-            sh "./gradlew connectedAndroidTest"
-          }
-        }
-
         stage('Deploy to Play Store') {
           steps{
             echo "------------>Deployment<------------"
@@ -30,5 +16,4 @@ pipeline{
           }
         }
     }
-
 }
