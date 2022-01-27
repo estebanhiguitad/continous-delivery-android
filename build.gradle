@@ -3,6 +3,7 @@ buildscript {
     ext {
         compose_version = '1.0.5'
         kotlin_version = '1.5.31'
+        jacoco_version = '0.8.7'
     }
     repositories {
         google()
@@ -16,4 +17,16 @@ buildscript {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+subprojects {
+    configurations.all {
+        resolutionStrategy {
+            eachDependency { details ->
+                if ('org.jacoco' == details.requested.group) {
+                    details.useVersion jacoco_version
+                }
+            }
+        }
+    }
 }
