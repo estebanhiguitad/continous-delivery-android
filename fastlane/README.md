@@ -31,14 +31,6 @@ Submit a new Beta Build to Crashlytics Beta
 
 
 
-### android git_message_tag_2
-
-```sh
-[bundle exec] fastlane android git_message_tag_2
-```
-
-
-
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
