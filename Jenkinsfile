@@ -16,10 +16,10 @@ pipeline{
           }
         }
 
-        stage('Unit Tests') {
+        stage('Instrumented Tests') {
           steps{
             echo "------------>Unit Tests<------------"
-            sh "./gradlew test"
+            sh "./gradlew connectedAndroidTest"
           }
         }
 
